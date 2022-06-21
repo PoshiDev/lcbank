@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./img/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <title>Cards | L.C Bank</title>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"> -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./cards.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+
+        <nav class="navbar">
+            <div class="container2">
+                <section class="wrapper">
+                    <a href="./accounts.html" class="d-flex gap-1 align-items-center"><span class="brand">L.C
+                        </span><img src="./img/moneda.png" alt="logo banco" class="monea"><span
+                            class="brand2">Bank</span></a>
+                    <button type="button" class="burger" id="burger">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </button>
+                    <div class="menu  d-flex align-items-center" id="menu">
+                        <ul class="menu-inner">
+
+                            <div class="dropdown ">
+                                <div class="menu-item dropdown-toggle navDrop" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                                    Accounts & Loans
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/accounts.html">Accounts
+                                            & Loans</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://lcbank.herokuapp.com/web/loan-application.htm">New Loan</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown ">
+                                <div class="menu-item dropdown-toggle navDrop" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cards
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Your
+                                            Cards</a></li>
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/created-cards.html">New
+                                            Card</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown ">
+                                <div class="menu-item dropdown-toggle navDrop" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    href="https://lcbank.herokuapp.com/web/transactions.html">
+                                    Transaction
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/transactions.html">New
+                                            Transaction</a></li>
+                                </ul>
+                            </div>
+
+
+                            <form>
+                                <li class="menu-item h1"><a @Click="cerrarSesion()" class="menu-link"><i
+                                            class='bx bx-log-out-circle bx-sm'></i></a></li>
+                            </form>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+
+                <div>
+                    <h1>
+                        <span>
+                            Your Cards
+                        </span>
+                    </h1>
+                </div>
+
+
+
+                <div class="creditCardDiv w-50 col-lg-6">
+                    <h5 class="text-center">
+                        <span>
+                            Credit Cards
+                        </span>
+                    </h5>
+
+
+                    <div class="d-flex justify-content-center align-items-center" id="tarjetaDeCredito"
+                        v-for="card in creditCard" v-if="creditCard.length != 0">
+                        <div class="wrapper">
+                            <div class="cards">
+                                <div class="face">
+                                    <div class="head">
+                                        <div class="title" v-if="card.colorType == 'GOLD'">
+                                            Gold Credit
+                                        </div>
+                                        <div class="title" v-else-if="card.colorType == 'SILVER'">
+                                            Silver Credit
+                                        </div>
+                                        <div class="title" v-else>
+                                            Titanium Credit
+                                        </div>
+                                        <button @click="modalConfirmacion(card.id)"><i
+                                                class='bx bx-trash bx-sm'></i></button>
+                                        <div class="logoVisa">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="card__logo" width="60"
+                                                height="15" viewBox="0 0 175.7 53.9">
+                                                <style>
+                                                    .visa {
+                                                        fill: #fff;
+                                                    }
+                                                </style>
+                                                <path class="visa"
+                                                    d="M61.9 53.1l8.9-52.2h14.2l-8.9 52.2zm65.8-50.9c-2.8-1.1-7.2-2.2-12.7-2.2-14.1 0-24 7.1-24 17.2-.1 7.5 7.1 11.7 12.5 14.2 5.5 2.6 7.4 4.2 7.4 6.5 0 3.5-4.4 5.1-8.5 5.1-5.7 0-8.7-.8-13.4-2.7l-2-.9-2 11.7c3.3 1.5 9.5 2.7 15.9 2.8 15 0 24.7-7 24.8-17.8.1-5.9-3.7-10.5-11.9-14.2-5-2.4-8-4-8-6.5 0-2.2 2.6-4.5 8.1-4.5 4.7-.1 8 .9 10.6 2l1.3.6 1.9-11.3M164.2 1h-11c-3.4 0-6 .9-7.5 4.3l-21.1 47.8h14.9s2.4-6.4 3-7.8h18.2c.4 1.8 1.7 7.8 1.7 7.8h13.2l-11.4-52.1m-17.5 33.6c1.2-3 5.7-14.6 5.7-14.6-.1.1 1.2-3 1.9-5l1 4.5s2.7 12.5 3.3 15.1h-11.9zm-96.7-33.7l-14 35.6-1.5-7.2c-2.5-8.3-10.6-17.4-19.6-21.9l12.7 45.7h15.1l22.4-52.2h-15.1" />
+                                                <path fill="#F7A600"
+                                                    d="M23.1.9h-22.9l-.2 1.1c17.9 4.3 29.7 14.8 34.6 27.3l-5-24c-.9-3.3-3.4-4.3-6.5-4.4" />
+                                            </svg>
+                                            <img src="../img/gold.png" alt="gold logo" class="cardLogoColor"
+                                                v-if="card.colorType == 'GOLD'">
+                                            <img src="../img/silver.png" alt="gold logo" class="cardLogoColor"
+                                                v-else-if="card.colorType == 'SILVER'">
+                                            <img src="../img/titanium.png" alt="gold logo" class="cardLogoColor" v-else>
+                                        </div>
+                                    </div>
+                                    <div class="main">
+                                        <div class="number-title">Card number:</div>
+                                        <div class="number">{{card.number}}</div>
+                                    </div>
+                                    <div class="dates">
+                                        <div class="start">
+                                            {{fechaFormateada(card.fromDate)}}
+                                        </div>
+                                        <div class="end">
+                                            {{fechaFormateada(card.thruDate)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="magnetic-line">
+                                    </div>
+                                    <div class="cvv">
+                                        CVV: {{card.cvv}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="noCreditCards text-center" v-else>
+                        <div class="card ">
+                            <p class="fs-4">&#129370; You don't have any Credit Cards, would you like to apply for one?
+                            </p>
+                            <button style="color: #F0DC88 ;" class="fw-bold fs-4" @click="redirigir">Click here!
+                                <box-icon name='credit-card' type='solid' color='#f0dc88'
+                                    style="position:absolute; bottom:18px"></box-icon></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="debitCarDiv w-50 col-lg-6 ">
+
+                    <h5 class="text-center">
+                        <span>
+                            Debit Cards
+                        </span>
+                    </h5>
+
+
+                    <div class="d-flex justify-content-center align-items-center" id="tarjetaDeDebito"
+                        v-for="card in debitCard" v-if="debitCard.length != 0">
+                        <div class="wrapper">
+                            <div class="cards">
+                                <div class="face">
+                                    <div class="head">
+                                        <div class="title" v-if="card.colorType == 'GOLD'">
+                                            Gold Debit
+                                        </div>
+                                        <div class="title" v-else-if="card.colorType == 'SILVER'">
+                                            Silver Debit
+                                        </div>
+                                        <div class="title" v-else>
+                                            Titanium Debit
+                                        </div>
+                                        <button @click="modalConfirmacion(card.id)"><i
+                                                class='bx bx-trash bx-sm'></i></button>
+                                        <div class="logoVisa">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="card__logo" width="60"
+                                                height="15" viewBox="0 0 175.7 53.9">
+                                                <path class="visa"
+                                                    d="M61.9 53.1l8.9-52.2h14.2l-8.9 52.2zm65.8-50.9c-2.8-1.1-7.2-2.2-12.7-2.2-14.1 0-24 7.1-24 17.2-.1 7.5 7.1 11.7 12.5 14.2 5.5 2.6 7.4 4.2 7.4 6.5 0 3.5-4.4 5.1-8.5 5.1-5.7 0-8.7-.8-13.4-2.7l-2-.9-2 11.7c3.3 1.5 9.5 2.7 15.9 2.8 15 0 24.7-7 24.8-17.8.1-5.9-3.7-10.5-11.9-14.2-5-2.4-8-4-8-6.5 0-2.2 2.6-4.5 8.1-4.5 4.7-.1 8 .9 10.6 2l1.3.6 1.9-11.3M164.2 1h-11c-3.4 0-6 .9-7.5 4.3l-21.1 47.8h14.9s2.4-6.4 3-7.8h18.2c.4 1.8 1.7 7.8 1.7 7.8h13.2l-11.4-52.1m-17.5 33.6c1.2-3 5.7-14.6 5.7-14.6-.1.1 1.2-3 1.9-5l1 4.5s2.7 12.5 3.3 15.1h-11.9zm-96.7-33.7l-14 35.6-1.5-7.2c-2.5-8.3-10.6-17.4-19.6-21.9l12.7 45.7h15.1l22.4-52.2h-15.1" />
+                                                <path fill="#F7A600"
+                                                    d="M23.1.9h-22.9l-.2 1.1c17.9 4.3 29.7 14.8 34.6 27.3l-5-24c-.9-3.3-3.4-4.3-6.5-4.4" />
+                                            </svg>
+                                            <img src="../img/gold.png" alt="gold logo" class="cardLogoColor"
+                                                v-if="card.colorType == 'GOLD'">
+                                            <img src="../img/silver.png" alt="gold logo" class="cardLogoColor"
+                                                v-else-if="card.colorType == 'SILVER'">
+                                            <img src="../img/titanium.png" alt="gold logo" class="cardLogoColor" v-else>
+                                        </div>
+                                    </div>
+                                    <div class="main">
+                                        <div class="number-title">Card number:</div>
+                                        <div class="number">{{card.number}}</div>
+                                    </div>
+                                    <div class="dates">
+                                        <div class="start">
+                                            {{fechaFormateada(card.fromDate)}}
+                                        </div>
+                                        <div class="end text-light" v-if="expired == false">
+                                            {{fechaFormateadaVencimiento(card.thruDate)}}
+                                        </div>
+                                        <div class="end text-danger" v-else>
+                                            {{fechaFormateadaVencimiento(card.thruDate)}} EXPIRED
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="magnetic-line">
+                                    </div>
+                                    <div class="cvv">
+                                        CVV: {{card.cvv}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="noDebitCards text-center" v-else>
+                        <div class="card ">
+                            <p class="fs-4">&#129370; You don't have any Credit Cards, would you like to apply for one?
+                            </p>
+                            <button style="color: #F0DC88 ;" class="fw-bold fs-4" @click="redirigir">Click here!
+                                <box-icon name='credit-card' type='solid' color='#f0dc88'
+                                    style="position:absolute; bottom:18px"></box-icon></button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+
+            <div class="container-fluid mx-auto">
+
+                <div class="row">
+                    <div class="line mb-3 mx-auto"></div>
+                    <div class="d-md-flex px-5 justify-content-around bd-highlight col-md-12 pt-5 pb-5 mb-3">
+                        <div class="p-2 flex-fill bd-highlight mb-5 mb-md-0">
+                            <h3>itCraft</h3>
+                            <small>Copyright &copy 2019</small>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">BYDGOCZCZ</h6>
+                            <p class="mb-0">Bydgoszcz Centrum Burnesa</p>
+                            <p class="mb-0">ul Pzzenmdcwa 25, ibsura 24,</p>
+                            <p class="mb-0">B5-7GB Bydgosrdz, Poland</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">TORUN</h6>
+                            <p class="mb-0">ul Reyana 2-4</p>
+                            <p class="mb-0">A0-100 Torun,</p>
+                            <p class="mb-0">Poland</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">WARSAW</h6>
+                            <p class="mb-0">Brain Embassy</p>
+                            <p class="mb-0">Alaya Jerasublisuble RS123</p>
+                            <p class="mb-0">02-222 Warsawa</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">LONDON</h6>
+                            <p class="mb-0">Google Campus</p>
+                            <p class="mb-0">4-5 Barnhill, Shaneditch</p>
+                            <p class="mb-0">London EC2A 4BK</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">NORWAY</h6>
+                            <p class="mb-0">Kristiansand</p>
+                        </div>
+                    </div>
+                    <div class="line mb-3 mx-auto"></div>
+                </div>
+                <div class="row bottom-part">
+                    <div class="d-lg-flex justify-content-between bd-highlight col-md-12 mb-5 px-5">
+                        <div class="p-2 align-self-center flex-fill bd-highlight">
+                            <div class="fa fa-facebook px-2"></div>
+                            <div class="fa fa-linkedin px-2"></div>
+                            <div class="fa fa-twitter px-2"></div>
+                            <div class="fa fa-instagram px-2"></div>
+                        </div>
+                        <div class="p-2 row flex-fill bd-highlight justify-content-left">
+                            <div class="p-2 d-lg-flex">
+                                <div class="p-2 flex-fill d-flex bd-highlight">Services</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Portfolio</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Pricing</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Testimonials</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Team</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Blog</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Carrer</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">How we work</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Manifesto</div>
+                            </div>
+                        </div>
+                        <div class="p-2 align-self-center flex-fill bd-highlight">
+                            <div class="fa fa-mobile px-2 grey-text">&nbsp;&nbsp;<span
+                                    id="contact">+549-2954-615567</span></div>
+                            <div class="fa fa-envelope-o px-2 grey-text">&nbsp;&nbsp;floresanagustina@hotmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+
+
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./cards.js"></script>
+</body>
+
+</html>

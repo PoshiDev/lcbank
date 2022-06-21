@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./img/favicon-32x32.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Loan Application | L.C Bank</title>
+  <!--   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./loan-application.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <nav class="navbar">
+            <div class="container2">
+                <section class="wrapper">
+                    <a href="./accounts.html" class="d-flex gap-1 align-items-center"><span class="brand">L.C </span><img
+                            src="./img/moneda.png" alt="logo banco" class="monea"><span class="brand2">Bank</span></a>
+                    <button type="button" class="burger" id="burger">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </button>
+                    <div class="menu  d-flex align-items-center" id="menu">
+                        <ul class="menu-inner">
+                            <div class="dropdown" id="navbarDropdown">
+                                <div class="menu-item dropdown-toggle navDrop" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                                    Accounts & Loans
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/accounts.html">Accounts & Loans</a></li>
+                                    <li><a class="dropdown-item"href="#">New Loan</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown ">
+                                <div class="menu-item dropdown-toggle navDrop" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cards
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/cards.html">Your
+                                            Cards</a></li>
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/created-cards.html">New
+                                            Card</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown ">
+                                <div class="menu-item dropdown-toggle navDrop" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false" href="https://lcbank.herokuapp.com/web/transactions.html">
+                                    Transaction
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="https://lcbank.herokuapp.com/web/transactions.html">New
+                                            Transaction</a></li>
+                                </ul>
+                            </div>
+                            
+                            <form>
+                                <li class="menu-item h1"><a @Click="cerrarSesion()" class="menu-link"><i
+                                            class='bx bx-log-out-circle bx-sm'></i></a></li>
+                            </form>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div>
+                    <h1>
+                        <span>
+                            Loans
+                        </span>
+                    </h1>
+                </div>
+                <h5 class="pb-2">
+                    <span>
+                        Available loan types:
+                    </span>
+                </h5>
+
+
+            </div>
+
+            <div class="topLoanTypes d-flex mw-100 pb-5">
+
+                <div class="card " style="width: 18rem;" v-for="loan in loans">
+                    <div class="card-body">
+                        <p style="color: #F0DC88 ;" class="fw-bold fs-3">&#129370; {{loan.name}}</p>
+                        <p class="fw-bold fs-4">Max Amout: $ {{loan.maxAmount.toLocaleString('de-DE')}}</p>
+                        <p class="card-text fw-bold">Payments: {{loan.payments}}</p>
+                        <p v-if="loan.name == 'Hipotecario'">Loan available to purchase a home, land or other types of
+                            real estate</p>
+                        <p v-else-if="loan.name == 'Personal'">Short-term loan that can be use for any purpose</p>
+                        <p v-else-if="loan.name == 'Automotriz'">Automobile loans work by providing a lump sum of money
+                            for you to buy a car</p>
+                        <p v-else>New loan type</p>
+                        <!-- <button class="card-link" style="color: #F0DC88 ;" >Apply for this loan! <box-icon name='donate-heart' color='#F0DC88' ></box-icon></button> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottomFormAndCard d-flex">
+                <div class="frame col-md-6">
+                    <div class="nav">
+                        <ul class="links">
+                            <li class="signin-active"><a class="btn">Apply for your new loan</a></li>
+                        </ul>
+                    </div>
+                    <div ng-app ng-init="checked = false">
+
+                        <form class="form-signin d-flex row justify-content-center" action="" method="post" name="form" @change="pagoPorMes">
+                            <div class="topForm d-flex gap-5">
+                                <div class="container5">
+                                    <label for="password">Choose the loan type:</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-danger dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                            <span>{{nombreLoan}}</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" v-for="loan in loans"
+                                                    @click="selectNombreLoan(loan.name)">{{loan.name}}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="container5">
+                                    <label for="password">Choose the payments:</label>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-danger dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                            <span>{{pago}}</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                            v-if="nombreLoan == 'Loans'">
+                                            <li><a class="dropdown-item">Choose the loan type</a></li>
+                                        </ul>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" v-else>
+                                            <li v-if="nombreLoan == 'Hipotecario'"><a class="dropdown-item"
+                                                    v-for="payment in hipotecario.payments"
+                                                    @click="selectPayments(payment)">{{payment}}</a></li>
+                                            <li v-else-if="nombreLoan == 'Personal'"><a class="dropdown-item"
+                                                    v-for="payment in personal.payments"
+                                                    @click="selectPayments(payment)">{{payment}}</a></li>
+                                            <li v-else-if="nombreLoan == 'Automotriz'"><a class="dropdown-item"
+                                                    v-for="payment in automotriz.payments"
+                                                    @click="selectPayments(payment)">{{payment}}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <label for="amount">Put the requested amount</label>
+                            <input class="form-styling" type="number" placeholder="$0.00" v-model="amount" @change="loanWithTaxes"/>
+
+
+
+                            <div class="container5" @click="pagoPorMes">
+                                <label for="password">Enter destination account</label>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-danger dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                        <span>{{numeroCuentaDestino}}</span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" v-for="cuenta in cuentas"
+                                                @click="selectNumberDestino(cuenta.number)">{{cuenta.number}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+                            <button class="btn-animate" type="submit" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" @click.prevent>
+                                <a class="btn-signin">Apply</a>
+                            </button>
+                        </form>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-start align-items-center">
+                    <div class="cardBottomContainer" style="width: 18rem;">
+                        <div class="cardBottom">
+                            <div class="text-center">
+                                <p class="fw-bold fs-4" style="color: #F0DC88 ;"> &#129370; Check your possible loan:</p>
+
+                            </div>
+                            <p class="card-text fw-bold" style="color: #F0DC88 ;">Loan Type:</p>
+                            <p>{{nombreLoan}}</p>
+
+                            <p class="card-text fw-bold" style="color: #F0DC88 ;">Max amout you can apply:</p>
+                            <p v-if="nombreLoan == 'Loans'">$ 00.000</p>
+                            <p v-else-if="nombreLoan == 'Hipotecario'">$ {{hipotecario.maxAmount.toLocaleString('de-DE')}}</p>
+                            <p v-else-if="nombreLoan == 'Personal'">$ {{personal.maxAmount.toLocaleString('de-DE')}}</p>
+                            <p v-else-if="nombreLoan == 'Automotriz'">$ {{automotriz.maxAmount.toLocaleString('de-DE')}}</p>
+
+                            <p class="card-text fw-bold" style="color: #F0DC88 ;">Payments:</p>
+                            <p>{{pago}}</p>
+
+                            <p class="card-text fw-bold" style="color: #F0DC88 ;">Amout you want to apply:</p>
+                            <p>$ {{amount.toLocaleString('de-DE')}}</p>
+
+                            <p class="card-text fw-bold" style="color: #F0DC88 ;">Loan with taxes includes:</p>
+                            <p>$ {{totalLoan.toLocaleString('de-DE')}}</p>
+
+                            <p class="card-text fw-bold" style="color: #F0DC88 ;">Monthly payment:</p>
+                            <p>$ {{monthlyPayment.toLocaleString('de-DE')}}</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!----------------------------------- Modal ---------------------------------------->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>The loan you request:</p>
+                                <p>Type: {{nombreLoan}} | Amount: ${{amount}} | Total amount with taxes: ${{totalLoan}} | Payments: {{pago}} | Monthly Payments: ${{monthlyPayment}} | Destination Account: {{numeroCuentaDestino}}</p>
+                                <p>Please confirm to apply for the new loan</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" @click.prevent="newLoan">Confirm!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+
+            <div class="container-fluid mx-auto">
+
+                <div class="row">
+                    <div class="line mb-3 mx-auto"></div>
+                    <div class="d-md-flex px-5 justify-content-around bd-highlight col-md-12 pt-5 pb-5 mb-3">
+                        <div class="p-2 flex-fill bd-highlight mb-5 mb-md-0">
+                            <h3>itCraft</h3>
+                            <small>Copyright &copy 2019</small>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">BYDGOCZCZ</h6>
+                            <p class="mb-0">Bydgoszcz Centrum Burnesa</p>
+                            <p class="mb-0">ul Pzzenmdcwa 25, ibsura 24,</p>
+                            <p class="mb-0">B5-7GB Bydgosrdz, Poland</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">TORUN</h6>
+                            <p class="mb-0">ul Reyana 2-4</p>
+                            <p class="mb-0">A0-100 Torun,</p>
+                            <p class="mb-0">Poland</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">WARSAW</h6>
+                            <p class="mb-0">Brain Embassy</p>
+                            <p class="mb-0">Alaya Jerasublisuble RS123</p>
+                            <p class="mb-0">02-222 Warsawa</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">LONDON</h6>
+                            <p class="mb-0">Google Campus</p>
+                            <p class="mb-0">4-5 Barnhill, Shaneditch</p>
+                            <p class="mb-0">London EC2A 4BK</p>
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                            <h6 class="places">NORWAY</h6>
+                            <p class="mb-0">Kristiansand</p>
+                        </div>
+                    </div>
+                    <div class="line mb-3 mx-auto"></div>
+                </div>
+                <div class="row bottom-part">
+                    <div class="d-lg-flex justify-content-between bd-highlight col-md-12 mb-5 px-5">
+                        <div class="p-2 align-self-center flex-fill bd-highlight">
+                            <div class="fa fa-facebook px-2"></div>
+                            <div class="fa fa-linkedin px-2"></div>
+                            <div class="fa fa-twitter px-2"></div>
+                            <div class="fa fa-instagram px-2"></div>
+                        </div>
+                        <div class="p-2 row flex-fill bd-highlight justify-content-left">
+                            <div class="p-2 d-lg-flex">
+                                <div class="p-2 flex-fill d-flex bd-highlight">Services</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Portfolio</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Pricing</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Testimonials</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Team</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Blog</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Carrer</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">How we work</div>
+                                <div class="p-2 flex-fill d-flex bd-highlight">Manifesto</div>
+                            </div>
+                        </div>
+                        <div class="p-2 align-self-center flex-fill bd-highlight">
+                            <div class="fa fa-mobile px-2 grey-text">&nbsp;&nbsp;<span
+                                    id="contact">+549-2954-615567</span></div>
+                            <div class="fa fa-envelope-o px-2 grey-text">&nbsp;&nbsp;floresanagustina@hotmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+
+    </div>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./loan-application.js"></script>
+
+</body>
+
+</html>

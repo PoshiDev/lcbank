@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon-32x32.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Index</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div id="app">
+
+    <nav class="navbar">
+      <div class="container2">
+        <section class="wrapper">
+          <a href="./index.html" class="d-flex gap-1 align-items-center"><span class="brand">L.C </span><img
+              src="./img/moneda.png" alt="logo banco" class="monea"><span class="brand2">Bank</span></a>
+          <button type="button" class="burger" id="burger">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+          </button>
+          <div class="menu d-flex align-items-center justify-content-start" id="menu">
+            <p class="brand3">Hello, <span v-if="welcomeBack == true">Welcome back!</span><span
+                v-else-if="welcome == true">We welcome you!</span></p>
+
+          </div>
+        </section>
+      </div>
+
+    </nav>
+
+
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="frame col-sm-6">
+          <div class="nav">
+            <ul class="links" v-cloak>
+              <li class="signin-active" v-cloak><a class="btn" v-cloak @click="mensajeNavBack">Existing User</a></li>
+              <li class="signup-inactive" v-cloak><a class="btn" v-cloak @click="mensajeNavWelcome">New User</a></li>
+            </ul>
+          </div>
+          <div ng-app ng-init="checked = false">
+
+            <form class="form-signin" action="" method="post" name="form" @submit.prevent="inicioSesion()">
+              <label for="fullname">Email address</label>
+              <input class="form-styling" type="email" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="" v-model="mailUser" />
+              <label for="password">Password</label>
+              <input class="form-styling" type="password" name="password" placeholder="" v-model="passwordUser" />
+
+              <button class="btn-animate" type="submit">
+                <a class="btn-signin">Login to your account</a>
+              </button>
+            </form>
+
+            <form class="form-signup" action="" method="post" name="form" @submit.prevent="nuevoCliente()">
+              <label for="fullname">First Name</label>
+              <input class="form-styling" type="name" name="firstName" placeholder="" v-model="firstName" />
+              <label for="fullname">Last Name</label>
+              <input class="form-styling" type="name" name="lastName" placeholder="" v-model="lastName" />
+              <label for="email">Email</label>
+              <input class="form-styling" type="text" name="email" placeholder="" v-model="mail" />
+              <label for="password">Create password</label>
+              <input class="form-styling" type="password" name="confirmpassword" placeholder="" v-model="password" />
+
+              <button type="submit" ng-click="checked = !checked" class="btn-signup">REGISTER</button>
+
+            </form>
+
+          </div>
+          <div class="forgot ">
+            <a href="#">Forgot your password?</a>
+          </div>
+
+        </div>
+
+
+        <div class="container1 col-sm-6 d-flex justify-content-center align-items-space-around">
+          <div class="d-flex row w-100">
+            <!-- TOP -->
+            <div class="textoInfo w-100 d-flex justify-content-end">
+              <div class="parrafoInfo card">
+                <p class="card-body">Do not let yourself be guided by telephone in transactions at ATMs.<span class="brand4"> Click on the little chicken to learn more security tips through our social networks!</span></p>
+              </div>
+            </div>
+
+            <!-- BOTTOM -->
+            <div class="row h-75 bottom">
+              <!-- <div class="vacioSocial-image h-75"></div> -->
+              <div class="social-container d-flex justify-content-center align-items-center">
+                <div class="social-image">
+                  <img src="./img/logoIndex.png" v-cloak  alt="Logo" id="logoIndex"
+                    v-if="pollitoEnojado == false">
+                  <img src="./img/logoIndexEnojado.png" v-cloak alt="Logo" id="logoIndex2" v-else>
+                </div>
+
+                <div v-cloak>
+                  <div class="social-icons">
+                    <a href="https://www.instagram.com/codepollito/?hl=es-la"><i class="fa fa-facebook"></i></a>
+                  </div>
+
+                  <div class="social-icons">
+                    <a href="https://www.behance.net/anaflores34"><i class="fa fa-twitter"></i></a>
+                  </div>
+
+                  <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/ana-agustina-flores-757b79199/"><i
+                        class="fa fa-linkedin"></i></a>
+                  </div>
+
+                  <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/ana-agustina-flores-757b79199/"><i
+                        class="fa fa-pinterest"></i></a>
+                  </div>
+
+                  <div class="social-icons">
+                    <a href="https://www.instagram.com/codepollito/?hl=es-la"><i class="fa fa-instagram"></i></a>
+                  </div>
+
+                  <div class="social-icons">
+                    <a href="https://www.behance.net/anaflores34"><i class="fa fa-dribbble"></i></a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- <div class=" d-flex justify-content-center row">
+      <h1>Login</h1>
+      <form class="w-50" @submit.prevent="inicioSesion()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            v-model="mailUser">
+
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassw-ord1" v-model="passwordUser">
+
+
+          <p v-cloak :class="{'mensajeEscondido' : mensajeIngreso == false , 'mensajeError' : mensajeIngreso == true }">
+            Prueba de nuevo gil</p>
+        </div>
+        <div class="d-flex gap-2">
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#exampleModal" ><u>Sing up</u></button>
+        </div>
+      </form>
+
+      
+      <div >
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrese</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form @submit.prevent="nuevoCliente()">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                    <input type="name" class="form-control" v-model="firstName">
+                    {{firstName}}
+                   
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                    <input type="name" class="form-control" v-model="lastName" >
+                    {{lastName}}
+                   
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="mail">
+                    {{mail}}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
+                    {{password}}
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button  type="submit" class="btn btn-primary">Sing Up</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+    <footer>
+
+      <div class="container-fluid mx-auto">
+
+        <div class="row">
+          <div class="line mb-3 mx-auto"></div>
+          <div class="d-md-flex px-5 justify-content-around bd-highlight col-md-12 pt-5 pb-5 mb-3">
+            <div class="p-2 flex-fill bd-highlight mb-5 mb-md-0">
+              <h3>itCraft</h3>
+              <small>Copyright &copy 2019</small>
+            </div>
+            <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+              <h5 class="places">BYDGOCZCZ</h5>
+              <p class="mb-0">Bydgoszcz Centrum Burnesa</p>
+              <p class="mb-0">ul Pzzenmdcwa 25, ibsura 24,</p>
+              <p class="mb-0">B5-7GB Bydgosrdz, Poland</p>
+            </div>
+            <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+              <h5 class="places">TORUN</h5>
+              <p class="mb-0">ul Reyana 2-4</p>
+              <p class="mb-0">A0-100 Torun,</p>
+              <p class="mb-0">Poland</p>
+            </div>
+            <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+              <h5 class="places">WARSAW</h5>
+              <p class="mb-0">Brain Embassy</p>
+              <p class="mb-0">Alaya Jerasublisuble RS123</p>
+              <p class="mb-0">02-222 Warsawa</p>
+            </div>
+            <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+              <h5 class="places">LONDON</h5>
+              <p class="mb-0">Google Campus</p>
+              <p class="mb-0">4-5 Barnhill, Shaneditch</p>
+              <p class="mb-0">London EC2A 4BK</p>
+            </div>
+            <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+              <h5 class="places">NORWAY</h5>
+              <p class="mb-0">Kristiansand</p>
+            </div>
+          </div>
+          <div class="line mb-3 mx-auto"></div>
+        </div>
+        <div class="row bottom-part">
+          <div class="d-lg-flex justify-content-between bd-highlight col-md-12 mb-5 px-5">
+            <div class="p-2 align-self-center flex-fill bd-highlight">
+              <div class="fa fa-facebook px-2"></div>
+              <div class="fa fa-linkedin px-2"></div>
+              <div class="fa fa-twitter px-2"></div>
+              <div class="fa fa-instagram px-2"></div>
+            </div>
+            <div class="p-2 row flex-fill bd-highlight justify-content-left">
+              <div class="p-2 d-lg-flex">
+                <div class="p-2 flex-fill d-flex bd-highlight">Services</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Portfolio</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Pricing</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Testimonials</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Team</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Blog</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Carrer</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">How we work</div>
+                <div class="p-2 flex-fill d-flex bd-highlight">Manifesto</div>
+              </div>
+            </div>
+            <div class="p-2 align-self-center flex-fill bd-highlight">
+              <div class="fa fa-mobile px-2 grey-text">&nbsp;&nbsp;<span id="contact">+54-9-2954-615567</span></div>
+              <div class="fa fa-envelope-o px-2 grey-text">&nbsp;&nbsp;floresanagustina@hotmail.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+
+
+
+  </div>
+
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
