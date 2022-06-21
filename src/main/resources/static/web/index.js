@@ -36,7 +36,7 @@ Vue.createApp({
                 headers:
                     { 'content-type': 'application/x-www-form-urlencoded' }
             })
-                .then(response => window.location.href = "https://lcbank.herokuapp.com/web/accounts.html")
+                .then(response => window.location.href = "https://littlechickenbank.herokuapp.com/web/accounts.html")
                 .catch(message => {
                     this.pollitoEnojado = true;
                     alertify.set('notifier', 'position', 'bottom-left');
@@ -58,7 +58,7 @@ Vue.createApp({
                         headers:
                             { 'content-type': 'application/x-www-form-urlencoded' }
                     })
-                        .then(response => window.location.href = "https://lcbank.herokuapp.com/web/accounts.html")
+                        .then(response => window.location.href = "https://littlechickenbank.herokuapp.com/web/accounts.html")
                 })
                 .catch(error => {
                     console.log(error.request.response)

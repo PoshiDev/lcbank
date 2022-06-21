@@ -40,7 +40,7 @@ Vue.createApp({
 
         cerrarSesion() {
             axios.post('/api/logout')
-                .then(response => window.location.href = "https://lcbank.herokuapp.com/web/index.html")
+                .then(response => window.location.href = "https://littlechickenbank.herokuapp.com/web/index.html")
 
         },
         ordenarTransactions() {
