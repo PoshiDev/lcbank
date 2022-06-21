@@ -12,7 +12,7 @@ Vue.createApp({
         }
     },
     created() {
-        axios.get('http://localhost:8585/api/clients/current')
+        axios.get('/api/clients/current')
             .then(datos => {
 
                 this.client = datos.data
@@ -42,7 +42,7 @@ Vue.createApp({
         },
 
         nuevaTransaccion() {
-            axios.post('http://localhost:8585/api/clients/current/transactions', `amount=${this.amount}&description=${this.description}&originAccountNumber=${this.numeroCuentaOrigen}&targetAccountNumber=${this.numeroCuentaDestino}`,
+            axios.post('/api/clients/current/transactions', `amount=${this.amount}&description=${this.description}&originAccountNumber=${this.numeroCuentaOrigen}&targetAccountNumber=${this.numeroCuentaDestino}`,
                 {
                     headers:
                         { 'content-type': 'application/x-www-form-urlencoded' }

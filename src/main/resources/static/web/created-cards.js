@@ -11,7 +11,7 @@ Vue.createApp({
     },
 
     created() {
-        axios.get('http://localhost:8585/api/clients/current')
+        axios.get('/api/clients/current')
             .then(datos => {
 
                 this.cards = datos.data.cards
@@ -36,7 +36,7 @@ Vue.createApp({
         nuevaTarjeta() {
             console.log(this.colorType)
             console.log(this.cardType)
-            axios.post('http://localhost:8585/api/clients/current/cards', `cardType=${this.cardType}&colorType=${this.colorType}`,
+            axios.post('/api/clients/current/cards', `cardType=${this.cardType}&colorType=${this.colorType}`,
                 {
                     headers:
                         { 'content-type': 'application/x-www-form-urlencoded' }

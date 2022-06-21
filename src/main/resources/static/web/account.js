@@ -16,7 +16,7 @@ Vue.createApp({
         let value = params.some_key;
         console.log(value)
 
-        axios.get('http://localhost:8585/api/accounts/' + value)
+        axios.get('/api/accounts/' + value)
             .then(datos => {
                 this.cuenta = datos.data
                 console.log(this.cuenta)
@@ -27,7 +27,7 @@ Vue.createApp({
                 this.transaccionesOrdenadas = this.transaccionesOrdenadas.filter(transaccion => transaccion.disableTransactions == false)
             }),
 
-            axios.get('http://localhost:8585/api/clients/current')
+            axios.get('/api/clients/current')
                 .then(datos => {
                     this.cliente = datos.data
                     console.log(this.cliente)

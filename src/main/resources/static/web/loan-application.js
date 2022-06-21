@@ -27,7 +27,7 @@ Vue.createApp({
     },
 
     created() {
-        axios.get('http://localhost:8585/api/loans')
+        axios.get('/api/loans')
         .then(datos => {
             this.loans = datos.data
             console.log(this.loans)
@@ -53,7 +53,7 @@ Vue.createApp({
             
         })
         .catch(error => console.log("hiciste algo mal gila"))
-        axios.get('http://localhost:8585/api/clients/current')
+        axios.get('/api/clients/current')
         .then(datos => {
 
             this.client = datos.data
@@ -86,7 +86,7 @@ Vue.createApp({
             this.pago = cuotas;
         },
         newLoan(){
-        axios.post('http://localhost:8585/api/loans',{loanName:this.nombreLoan,amount:this.amount,payment:this.pago,targetAccountNumber:this.numeroCuentaDestino},
+        axios.post('/api/loans',{loanName:this.nombreLoan,amount:this.amount,payment:this.pago,targetAccountNumber:this.numeroCuentaDestino},
         {headers:{'Content-Type': 'application/json'}}
         )
         .then(() => {

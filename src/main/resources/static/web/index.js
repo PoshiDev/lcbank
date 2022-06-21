@@ -19,7 +19,7 @@ Vue.createApp({
     },
 
     created() {
-        axios.get('http://localhost:8585/api/clients/current',
+        axios.get('/api/clients/current',
             {
                 headers: { 'accept': 'application/xml' }
             })

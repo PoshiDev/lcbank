@@ -18,7 +18,7 @@ Vue.createApp({
 
     created() {
 
-        axios.get('http://localhost:8585/api/clients/current')
+        axios.get('/api/clients/current')
             .then(datos => {
                 this.cliente = datos.data
                 console.log(this.cliente)
@@ -79,7 +79,7 @@ Vue.createApp({
         },
 
         desabilitarCuenta(id) {
-            axios.patch('http://localhost:8585/api/clients/current/accounts', `id=${id}`,
+            axios.patch('/api/clients/current/accounts', `id=${id}`,
                 {
                     headers:
                         { 'content-type': 'application/x-www-form-urlencoded' }
@@ -89,7 +89,7 @@ Vue.createApp({
         },
 
         crearCuenta(color) {
-            axios.post('http://localhost:8585/api/clients/current/accounts', `accountType=${color}`,
+            axios.post('/api/clients/current/accounts', `accountType=${color}`,
                 {
                     headers:
                         { 'content-type': 'application/x-www-form-urlencoded' }
@@ -153,40 +153,6 @@ Vue.createApp({
     },
 
 }).mount("#app")
-/* 
-document.addEventListener("DOMContentLoaded", function (event) {
-
-    const showNavbar = (toggleId, navId, bodyId, headerId) => {
-        const toggle = document.getElementById(toggleId),
-            nav = document.getElementById(navId),
-            bodypd = document.getElementById(bodyId),
-            headerpd = document.getElementById(headerId)
-
-        if (toggle && nav && bodypd && headerpd) {
-            toggle.addEventListener('click', () => {
-                nav.classList.toggle('show')
-                toggle.classList.toggle('bx-x')
-                bodypd.classList.toggle('body-pd')
-                headerpd.classList.toggle('body-pd')
-            })
-        }
-    }
-
-    showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
-    const linkColor = document.querySelectorAll('.nav_link')
-
-    function colorLink() {
-        if (linkColor) {
-            linkColor.forEach(l => l.classList.remove('active'))
-            this.classList.add('active')
-        }
-    }
-    linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-}); */
-
-
 
 
 const burgerMenu = document.getElementById("burger");

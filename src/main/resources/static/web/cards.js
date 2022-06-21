@@ -15,7 +15,7 @@ Vue.createApp({
     },
 
     created() {
-        axios.get('http://localhost:8585/api/clients/current')
+        axios.get('/api/clients/current')
             .then(datos => {
                 this.cliente = datos.data
                 console.log(this.cliente)
@@ -39,7 +39,7 @@ Vue.createApp({
     methods: {
 
         redirigir(){
-            window.location.href = "https://lcbank.herokuapp.com/web/created-cards.html"
+            window.location.href = "https://littlechickenbank.herokuapp.com/web/created-cards.html"
         },
 
         cerrarSesion() {
@@ -93,7 +93,7 @@ Vue.createApp({
 
 
         desabilitarTarjeta(id) {
-            axios.patch('http://localhost:8585/api/clients/current/cards', `id=${id}`,
+            axios.patch('/api/clients/current/cards', `id=${id}`,
                 {
                     headers:
                         { 'content-type': 'application/x-www-form-urlencoded' }
